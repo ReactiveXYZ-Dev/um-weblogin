@@ -21,11 +21,7 @@ class Authenticator(object):
 
     def __init__(self, two_fa = True, duo_factor_handler = None, passcode_factor_handler = None):
         """
-        Inject username & password to the authenticator
-        
-        Arguments:
-            username {str} -- Umich uniqname
-            password {str} -- Uniqname password
+        See README
         """
         self.reset_session()
         self._username = None
