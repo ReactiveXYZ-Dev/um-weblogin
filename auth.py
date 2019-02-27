@@ -163,7 +163,6 @@ class Authenticator(object):
         validation_data = { 'required': "mtoken" }
         validation_data[post_arg] = duo_cookie + ':' + app
         self._session.post(urllib.parse.unquote(redirect_url), data=validation_data)
-        print(self.is_authenticated())
     
     def _extract_duo_info(self, html):
         tx, app = self._match_duo_config(html, 'sig_request')
