@@ -25,6 +25,7 @@ The <i>Authenticator</i> class takes 3 optional arguments:
 
 ### Authenticate
 ```python
+auth.set_credentials(uniqname, password)
 auth.authenticate()
 ```
 
