@@ -7,7 +7,7 @@ so you can write more cool stuff that leverage those resources.
 * Supports both legacy weblogin and **Duo**
 
 ## Usage 
-Simply import the files <i>constants.py</i> and <i>auth.py</i> into your project
+Simply import the <i>auth.py</i> into your project
 
 ### Make an authenticator
 ```python

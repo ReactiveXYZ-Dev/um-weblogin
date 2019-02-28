@@ -8,8 +8,11 @@ import json
 import requests
 import urllib
 from getpass import getpass
-from constants import *
 from bs4 import BeautifulSoup
+
+# constants
+AUTH_URL = "https://weblogin.umich.edu/cosign-bin/cosign.cgi"
+AUTH_PAGE_URL = "https://weblogin.umich.edu"
 
 """
 Lecture authentication procedures
