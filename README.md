@@ -43,4 +43,4 @@ Please post a issue or pull request if you see bugs or have any suggestions :)
 
 ### TODOs
 * Canvas and some other external services use an additional layer of SAML authentication, but should be completely automate-able.
-* It'd be awesome to be able to also accept Duo requests automatically, but can introduce a security concern (i.e. some other guy can log into your account automatically). Still, nice to have as a potential feature.
+* It'd be awesome to be able to also accept Duo requests automatically, but can introduce a security concern (You know, some other guy can just log into your account automatically, which breaks the purpose of 2fa already). Still, nice to have as a potential on/off feature.
