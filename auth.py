@@ -15,7 +15,7 @@ AUTH_URL = "https://weblogin.umich.edu/cosign-bin/cosign.cgi"
 AUTH_PAGE_URL = "https://weblogin.umich.edu"
 
 """
-Lecture authentication procedures
+UM authentication procedures
 
 @Version 2.0.0
 
