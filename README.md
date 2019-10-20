@@ -7,7 +7,7 @@ so you can write more cool stuff that leverage those resources.
 * Supports both legacy weblogin and **Duo**
 
 ## Usage 
-Simply import the <i>auth.py</i> into your project
+Simply import <i>auth.py</i> into your project
 
 ### Make an authenticator
 ```python
@@ -31,7 +31,7 @@ auth.authenticate()
 
 Yep! That's it :) The entire login flow will be simulated automatically using either command line prompts or your custom handler defined above.
 
-Now you have a fully authenticated [Requests](http://docs.python-requests.org/en/master/) object that you can mess around with!
+Now you have a fully authenticated [requests](https://requests.kennethreitz.org/en/master/) object that you can mess around with!
 
 ```python
 # get lecture recordings!
@@ -39,7 +39,7 @@ print(auth.session().get("https://leccap.engin.umich.edu/leccap/"))
 ```
 
 ### Advanced example
-With an authencated requests session, although it's now very straightfoward to access U-M resources (e.g. lecture recording, mcommunity etc), it requires just a little bit more effort to be able to access third party sites that uses U-M SSO and SAML to authenticate into their sites (e.g. Canvas). In this example, I will show you how to use your U-M session to get into your personal canvas page:
+With an authenticated requests session, although it's now very straightfoward to access U-M resources (e.g. lecture recording, mcommunity etc), it requires just a little bit more effort to be able to access third party sites that uses U-M SSO and SAML to log into their sites (e.g. Canvas). In this example, I will show you how to use your U-M session to get into your personal canvas page:
 
 ```python
 from auth import Authenticator
@@ -47,6 +47,9 @@ from bs4 import BeautifulSoup
 
 # UM Authentication
 def auto_select(factors):
+    """
+    automatically select your first device and first auth factor
+    """
     first = factors[0]
     return (first['device_name'], first['factors'][0])
 
@@ -63,17 +66,17 @@ html = BeautifulSoup(html, 'html.parser')
 saml_input = html.find(attrs={"name": "SAMLResponse"})
 saml_id = saml_input['value']
 
-# Post SAML response to Canvas
+# Post SAML response to Canvas...
 session.post('https://umich.instructure.com/login/saml', data={'SAMLResponse': saml_id})
 
-# ... and you have a fully authenticated Canvas session! Pretty easy, right?
+# ...and you have a fully authenticated Canvas session! Pretty easy, right?
 print(session.get('https://umich.instructure.com/').text)
 
-# Now do whatever creepy things you want by crawling Canvas
+# Now do whatever creepy things you want with Canvas!
 ```
 
 ### Development
 Please post a issue or pull request if you see bugs or have any suggestions :)
 
 ### TODOs
-* It'd be awesome to be able to also accept Duo requests automatically, but can introduce a security concern (You know, some other guy can just log into your account automatically, which breaks the purpose of 2fa already). Still, nice to have as a potential on/off feature.
+* It'd be awesome to be able to also accept Duo requests automatically, but can introduce a security concern (anyone can just log into your account automatically, which breaks the purpose of 2fa already). Still, nice to have as a potential on/off feature. (Seems very hard and Duo disabled use of third party SSL certs, well done)
